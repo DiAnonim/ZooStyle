@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
     name = models.CharField(_("Name"), max_length=150)
     phone = models.CharField(_("Phone number"), max_length=20, validators=[validate_phone_number])
     address = models.CharField(_("Address"), max_length=255, blank=True, null=True)
-    photo = models.ImageField(_("Photo"), upload_to='accounts/profile_photo/', blank=True, null=True)
+    photo = models.ImageField(_("Photo"), upload_to='profile_photo/', blank=True, null=True)
     pet_name = models.CharField(_("Pet name"), max_length=100, blank=True, null=True)
     
     USERNAME_FIELD = 'username'
