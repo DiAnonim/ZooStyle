@@ -1,0 +1,21 @@
+{% load static %}
+
+<section style="background-color: rgb(251, 227, 253);">
+    <a href="{% url 'home' %}" style="display: flex; align-items: center; text-decoration: none; color: black;">
+            <img src="{% static 'images/logo.png' %}" alt="Логотип ZooStyle" style="height: 50px; margin-right: 10px;">
+    </a>
+    
+    <div>
+    {% if not request.user.is_authenticated %}
+     <p>{{request.user.first_name}}</p>
+     <a href="{% url 'accounts_app:login' %}">Войти</a>
+     <a href="{% url 'accounts_app:signup' %}">Зарегистрироваться</a>
+     {% else %}
+     <p>{{request.user.username}}</p>
+     <form action="{% url 'accounts_app:logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Выйти">
+    </form>
+     {% endif %}
+    </div>
+</section>
