@@ -47,7 +47,6 @@ class CustomUserLogoutView(LoginRequiredMixin, LogoutView):
     next_page = reverse_lazy('home')
     
     
-
 """ 
 Custom User Profile 
 """
