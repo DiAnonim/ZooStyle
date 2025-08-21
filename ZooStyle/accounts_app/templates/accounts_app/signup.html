@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Зарегистрироваться">
-    </form>
-    <p>У вас уже есть аккаунт?<a href="{% url 'accounts_app:login' %}">Войти</a></p>
-</div>
+<section>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+        <p>У вас уже есть аккаунт? <a href="{% url 'accounts_app:login' %}">Войти</a></p>
+    </div>
+</section>
 {% endblock %}
