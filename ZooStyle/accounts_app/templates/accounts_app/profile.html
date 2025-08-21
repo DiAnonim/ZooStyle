@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load accounts_app.customtags %}
+
+{% block content %}
+<section>
+    <div>
+        <div>
+            <h2><b>Username:</b> <span>{{user.username}}</span></h2>
+            <h2><b>Имя:</b> <span>{{user.first_name}}</span></h2>
+            <h2><b>Номер телефона:</b> <span>{{user.phone}}</span></h2>
+            <h2><b>Адрес:</b> <span>{{user.address | isHaveValue}}</span></h2>
+            <h2><b>Имя питомца:</b> <span>{{user.pet_name | isHaveValue}}</span></h2>
+            <h3><b>Дата создания аккаунта:</b> <span>{{user.date_joined}}</span></h3>
+        </div>
+
+        <div>
+            <form action="{% url 'accounts_app:profile_edit' %}" method="get">
+                {% csrf_token %}
+                <input type="submit" value="Изменить данные">
+            </form>
+            <form action="{% url 'accounts_app:logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Выйти">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

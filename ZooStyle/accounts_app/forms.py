@@ -47,7 +47,5 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = CustomUser
-        fields = ['photo', 'username', 'first_name', 'phone', 'address', 'pet_name']
+        fields = ['username', 'first_name', 'phone', 'address', 'pet_name']
         
-# class CustomAuthenticationForm(AuthenticationForm):
-#     pass
