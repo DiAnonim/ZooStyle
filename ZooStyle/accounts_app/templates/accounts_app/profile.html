@@ -19,6 +19,7 @@
                 {% csrf_token %}
                 <input type="submit" value="Изменить данные">
             </form>
+            <a href="{% url 'accounts_app:profile_delete' %}">Удалить аккаунт</a>
             <form action="{% url 'accounts_app:logout' %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Выйти">

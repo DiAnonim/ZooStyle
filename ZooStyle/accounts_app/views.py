@@ -7,7 +7,6 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth import login
 from django.contrib import messages
 
 from accounts_app.models import CustomUser
@@ -68,6 +67,19 @@ class CustomUserEditView(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     template_name = 'accounts_app/profile_edit.html'
     success_url = reverse_lazy('accounts_app:profile')
     success_message = "Profile edit successfully."
+    
+    def get_object(self):
+        return self.request.user
+    
+    
+""" 
+Custom User Delete 
+"""
+class CustomUserDeleteView(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+    model = CustomUser
+    template_name = "accounts_app/profile_delete.html"
+    success_url = reverse_lazy("home")
+    success_message = 'Task deleted successfully'
     
     def get_object(self):
         return self.request.user
