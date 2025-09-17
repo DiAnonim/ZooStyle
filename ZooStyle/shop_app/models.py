@@ -1,17 +1,32 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-import uuid
 
 class Category(models.Model):
     name = models.CharField(_("Category name"), max_length=120)
-    description = models.TextField(_("Category description"), max_length=300, blank=True, null=True)
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name='children', verbose_name=_("Parent category"), blank=True, null=True)
     
     def __str__(self):
-        return self.name
+        return self.get_full_path()
+    
+    def get_full_path(self):
+        path_parts = [self.name]
+        current_parent = self.parent
+        while current_parent:
+            path_parts.insert(0, current_parent.name)
+            current_parent = current_parent.parent
+        return "/".join(path_parts)
     
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+        
+        
+class Tag(models.Model):
+    name = models.CharField(_("Tags name"), max_length=120)
+    
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     class UnitType(models.TextChoices):
@@ -19,6 +34,7 @@ class Product(models.Model):
         weight = "W", "кг"
     
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE, related_name='products', verbose_name=_("Product category"))
+    tags = models.ManyToManyField(to=Tag, related_name='products', blank=True, verbose_name=_("Product tags"))
 
     sku = models.CharField(_("SKU"), max_length=50, unique=True, blank=True)
 
