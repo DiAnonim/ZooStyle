@@ -1,0 +1,219 @@
+.site-footer {
+    background-color: #a781a9;
+    color: #ffffff;
+    padding: 50px 0 20px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+}
+
+/* Убедитесь, что футер прижимается к низу, если контент короткий */
+/* Эти стили обычно применяются к body и html, а не к футеру напрямую */
+/*
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content-wrapper {
+    flex: 1;
+}
+*/
+
+.site-footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #f39c12;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+/* Стили для секции "О нас" */
+.about-us p {
+    font-size: 0.9em;
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}
+
+/* Стили для иконок соцсетей */
+.social-links img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover img {
+    opacity: 1;
+}
+
+
+/* Стили для секции "Полезные ссылки" */
+.links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.links li {
+    margin-bottom: 10px;
+}
+
+.links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95em;
+}
+
+.links a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+/* Стили для секции "Контакты" */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: #f39c12;
+    font-size: 1.2em;
+}
+
+/* Стили для секции "Запишитесь на груминг!" */
+.booking-promo {
+    text-align: center;
+    background-color: #34495e;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-promo h3 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    color: #ffffff;
+    font-size: 1.3em;
+}
+
+.booking-promo p {
+    font-size: 0.9em;
+    color: #bdc3c7;
+}
+
+.booking-promo .btn {
+    margin-top: 15px;
+}
+
+/* Стиль кнопки "btn-outline-primary" */
+.btn-outline-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    color: #3498db;
+    background-color: transparent;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Нижняя полоса футера (copyright) */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+    .footer-section {
+        min-width: 180px;
+    }
+    .footer-section h3 {
+        font-size: 1.3em;
+    }
+    .booking-promo {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-section.about-us .social-links {
+        justify-content: center;
+    }
+    .footer-section.links ul {
+        padding: 0;
+    }
+    .footer-section.contact-info p {
+        justify-content: center;
+    }
+    .footer-section.contact-info i {
+        margin-right: 5px;
+    }
+    .booking-promo .btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .footer-section h3 {
+        font-size: 1.4em;
+    }
+}

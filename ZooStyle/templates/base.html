@@ -7,18 +7,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Zoo Style{% endblock %}</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'shop_app/css/style_home_shop.css' %}">
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<nav>
+
+<navbar class="site-navbar">
 {% include "includes/navbar.html" %}
-</nav>
+</navbar>
+
 <body style="background-image: url('{% static 'images/back.jpg' %}'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; height: 100vh; margin: 0;">
     <div>
         {% block content %}{% endblock %}
     </div>
 </body>
+
+<footer class="site-footer">
+    {% include "includes/footer.html" %}
+</footer>
 
 </html>

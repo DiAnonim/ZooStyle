@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 class Category(models.Model):
     name = models.CharField(_("Category name"), max_length=120)
     parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name='children', verbose_name=_("Parent category"), blank=True, null=True)
+    level_view = models.IntegerField(_("Category level view"), default=1)
     
     def __str__(self):
         return self.get_full_path()
@@ -15,6 +16,10 @@ class Category(models.Model):
             path_parts.insert(0, current_parent.name)
             current_parent = current_parent.parent
         return "/".join(path_parts)
+    
+    def get_level_view(self):
+        path = self.get_full_path()
+        return int(path.count("/")) + 1 
     
     class Meta:
         verbose_name = 'Category'
