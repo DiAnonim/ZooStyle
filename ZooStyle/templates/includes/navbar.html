@@ -6,7 +6,7 @@
             <img src="{% static 'images/logo.png' %}" alt="Логотип ZooStyle" class="navbar-logo">
         </a>
 
-        <nav class="navbar-nav"> {# Добавлен класс navbar-nav #}
+        <nav class="navbar-nav">
             <a href="{% url 'shop_app:shop_home' %}">Магазин</a>
 
             {% if not request.user.is_authenticated %}

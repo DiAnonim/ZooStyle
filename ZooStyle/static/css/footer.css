@@ -6,22 +6,6 @@
     position: relative;
 }
 
-/* Убедитесь, что футер прижимается к низу, если контент короткий */
-/* Эти стили обычно применяются к body и html, а не к футеру напрямую */
-/*
-html, body {
-    height: 100%;
-    margin: 0;
-}
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-.content-wrapper {
-    flex: 1;
-}
-*/
 
 .site-footer .container {
     max-width: 1200px;
