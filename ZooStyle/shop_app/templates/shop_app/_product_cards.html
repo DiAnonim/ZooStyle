@@ -1,0 +1,30 @@
+{% for product in products %}
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        {% if product.discount_price and product.discount_price < product.price %}
+        <span class="discount-badge">Скидка</span>
+        {% endif %}
+    </div>
+
+    <div class="product-info">
+        <div class="product-pricing">
+            {% if product.discount_price and product.discount_price < product.price %}
+            <span class="original-price">{{ product.price }} ₽</span>
+            <span class="discounted-price">{{ product.discount_price }} ₽</span>
+            {% else %}
+            <span class="current-price">{{ product.price }} ₽</span>
+            {% endif %}
+        </div>
+
+        <h3 class="product-name">{{ product.name }}</h3>
+
+        <div class="product-meta">
+            {% if product.category %}
+            <span class="product-category">{{ product.category.name }}</span>
+            {% endif %}
+        </div>
+   
+    </div>
+</div>
+{% endfor %}

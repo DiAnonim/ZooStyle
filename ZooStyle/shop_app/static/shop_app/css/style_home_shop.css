@@ -10,6 +10,7 @@
     #shop-sidebars {
         background-color: #f9f9f9;
         padding: 20px;
+        margin: 5px;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         width: 250px;
@@ -64,7 +65,7 @@
     #products-section h3 {
         margin-top: 0;
         color: #333;
-        font-size: 1.8em;
+        font-size: 1.2em;
         margin-bottom: 25px;
         text-align: center;
     }
@@ -72,7 +73,7 @@
     .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 25px;
+        gap: 15px;
     }
 
     .product-card {
@@ -133,7 +134,7 @@
         margin-bottom: 10px;
         color: #333;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;

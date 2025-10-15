@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <title>{% block title %}Zoo Style{% endblock %}</title>
 
     <!-- Styles -->
@@ -28,6 +29,9 @@
     <div>
         {% block content %}{% endblock %}
     </div>
+
+    
+    <script src="{% static 'shop_app/js/shop_app_script.js' %}"></script>
 </body>
 
 <footer class="site-footer">

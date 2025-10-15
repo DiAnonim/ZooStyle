@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_js %}
-<script src="{% static 'shop_app/script.js' %}"></script>
-{% endblock %}
-
 
 {% block content %}
 <div class="shop-page-layout">
@@ -14,49 +10,26 @@
         <div>
             <ul>
                 {% for category in categories %}
-                <button class="category-toggle" data-category-id="{{ category.id }}"
-                    aria-expanded="false">{{category.name}}</button>
+                <a href="javascript:void(0)" class="category-link" data-category-id="{{ category.id }}">
+                    {{ category.name }}
+                </a>
                 {% endfor %}
+                <a href="javascript:void(0)" class="category-link" data-category-id="">
+                    Все продукты
+                </a>
             </ul>
         </div>
     </section>
 
     <section id="products-section">
-        <h3>Продукты</h3>
-        <div class="products-grid">
-            {% for product in products %}
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
-                    {% if product.discount_price and product.discount_price < product.price %}
-                    <span class="discount-badge">Скидка</span>
-                    {% endif %}
-                </div>
-
-                <div class="product-info">
-                    <h3 class="product-name">{{ product.name }}</h3>
-
-                    <div class="product-meta">
-                        {% if product.category %}
-                        <span class="product-category">{{ product.category.name }}</span>
-                        {% endif %}
-                    </div>
-
-                    <div class="product-pricing">
-                        {% if product.discount_price and product.discount_price < product.price %}
-                        <span class="original-price">{{ product.price }} ₽</span>
-                        <span class="discounted-price">{{ product.discount_price }} ₽</span>
-                        {% else %}
-                        <span class="current-price">{{ product.price }} ₽</span>
-                        {% endif %}
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            {% endfor %}
+        <div class="products-grid" id="products-container">
+            {% include 'shop_app/_product_cards.html' with products=products %}
         </div>
     </section>
 
 </div>
-{% endblock%}
+
+{# Добавляем сюда скрытый элемент, который будет содержать сгенерированный URL #}
+<span id="filter-url-span" data-url="{% url 'shop_app:filter_products' %}" style="display: none;"></span>
+
+{% endblock %}
